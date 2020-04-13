@@ -52,6 +52,16 @@ jobs:
       - *install-dependencies
       - *save-cache
 
+  linting:
+    executor: app-executor
+    steps:
+      - checkout
+      - *show-current-branch-name
+      - *restore-cache
+      - run:
+          name: Run linting
+          command: npm run lint
+
   deploy-to-aws-s3:
     executor: app-executor
     steps:
@@ -97,9 +107,18 @@ workflows:
   build_and_deploy:
     jobs:
       - build
-      - deploy-to-aws-s3:
+      - linting:
           requires:
             - build
+          filters:
+            branches:
+              only:
+                - develop
+                - staging
+                - master
+      - deploy-to-aws-s3:
+          requires:
+            - linting
           filters:
             branches:
               only:
