@@ -64,24 +64,16 @@ const Header = () => {
             <span className="bar"></span>
           </div>
           <ul className={`${navClass ? 'header-nav header-mobile-nav' : 'header-nav'}`}>
-            {
-              HEADER_LIST.map((data) =>
-                <li
-                  key={data.id}
-                  className="header-nav-item">
-                  <span className="header-list-name">
-                    <i className={data.iconClass}></i>
-                  </span>
-                  &nbsp;
-                  <span className="header-list-name">{data.name}</span>
-                </li>
-              )
-            }
-            <input
-              className="search-input"
-              type="text"
-              placeholder="Search for a movie"
-            />
+            {HEADER_LIST.map((data) => (
+              <li key={data.id} className="header-nav-item">
+                <span className="header-list-name">
+                  <i className={data.iconClass}></i>
+                </span>
+                &nbsp;
+                <span className="header-list-name">{data.name}</span>
+              </li>
+            ))}
+            <input className="search-input" type="text" placeholder="Search for a movie" />
           </ul>
         </div>
       </div>
