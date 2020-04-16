@@ -20,14 +20,13 @@ const SearchResult = (props) => {
   return (
     <div className="searchKeyword">
       <div className="grid-search-title">
-        <span className="grid-text1">Your search keyword:</span>{' '}
-        <span className="grid-text2">{searchQuery}</span>
+        <span className="grid-text1">Your search keyword:</span> <span className="grid-text2">{searchQuery}</span>
       </div>
       <div className="grid">
         {movieData.map((data) => (
           <Fragment key={uuidv4()}>
-            {
-              data.poster_path && <LazyImage className="grid-cell" src={`${IMAGE_URL}${data.poster_path}`} alt="placeholder">
+            {data.poster_path && (
+              <LazyImage className="grid-cell" src={`${IMAGE_URL}${data.poster_path}`} alt="placeholder">
                 <div className="grid-read-more">
                   <button className="grid-cell-button">Read More</button>
                 </div>
@@ -40,7 +39,7 @@ const SearchResult = (props) => {
                   </div>
                 </div>
               </LazyImage>
-            }
+            )}
           </Fragment>
         ))}
       </div>

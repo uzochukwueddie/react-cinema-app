@@ -93,13 +93,7 @@ const Header = (props) => {
                 <span className="header-list-name">{data.name}</span>
               </li>
             ))}
-            <input
-              className="search-input"
-              type="text"
-              placeholder="Search for a movie"
-              value={search}
-              onChange={onSearchChange}
-            />
+            <input className="search-input" type="text" placeholder="Search for a movie" value={search} onChange={onSearchChange} />
           </ul>
         </div>
       </div>
