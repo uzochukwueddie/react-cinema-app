@@ -1,0 +1,21 @@
+.grid-search-title {
+  display: grid;
+  grid-template-areas: "text1 text2";
+  grid-template-rows: max-content max-content;
+  grid-template-columns: max-content;
+  margin-top: 100px;
+  text-align: left;
+  padding-left: 25px;
+  font-size: 18px;
+}
+
+.grid-text1 {
+  grid-area: text1;
+  padding-right: 8px;
+  color: #9aa9bb;
+}
+
+.grid-text2 {
+  grid-area: text2;
+  color: #ffffff;
+}
