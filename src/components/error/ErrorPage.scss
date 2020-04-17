@@ -1,0 +1,35 @@
+.error-page {
+  color: #ffffff;
+  font-size: 100%;
+  line-height: 1.5;
+  height: 100%;
+
+  .error-link {
+    margin: auto;
+    font-weight: 300;
+    color: white;
+    font-size: 1.2rem;
+    border: 1px solid #efefef;
+    padding: 0.5em;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none !important;
+  }
+
+  .error-link:hover {
+    color: #ffffff;
+  }
+
+  .error-msg {
+    font-size: 2em;
+    text-align: center;
+    font-weight: 100;
+    margin-bottom: 10rem;
+  }
+
+  .error-header {
+    text-align: center;
+    font-size: 15em;
+    font-weight: 100;
+  }
+}

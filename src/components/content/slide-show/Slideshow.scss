@@ -1,0 +1,154 @@
+.slider {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.slider-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 700px;
+  color: #fff;
+  text-align: center;
+}
+
+.slider-nav {
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  order: 2;
+}
+
+.slider-navButton {
+  background: none;
+  border: 0;
+  height: 20px;
+  opacity: 0.5;
+  outline: none !important;
+  position: relative;
+  transition: opacity 0.25s;
+  width: 20px;
+  padding: 0;
+
+  &::after {
+    background: #345;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 6px;
+    left: 7px;
+    position: absolute;
+    top: 7px;
+    width: 6px;
+  }
+}
+
+.slider-navButton--active {
+  opacity: 1;
+
+  &::after {
+    height: 12px;
+    left: 4px;
+    opacity: 1;
+    top: 4px;
+    width: 12px;
+  }
+}
+
+.slider-arrows {
+  height: 0;
+  left: 0;
+  position: absolute;
+  top: calc(50% - 35px);
+  width: 100%;
+  z-index: 1;
+}
+
+.slider-arrow {
+  background: none;
+  border: none;
+  height: 40px;
+  opacity: 0.5;
+  outline: none;
+  position: absolute;
+  transition: opacity 0.25s;
+  padding: 0px;
+  width: 21px;
+  outline: none !important;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &::after,
+  &::before {
+    background: #fff;
+    border-radius: 3px;
+    content: "";
+    display: block;
+    height: 23px;
+    position: absolute;
+    width: 5px;
+    left: 8px;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+}
+
+.slider-arrow--left {
+  opacity: 1;
+  top: 0;
+  left: 10px;
+
+  &::before {
+    transform: rotate(30deg);
+  }
+
+  &::after {
+    transform: rotate(-30deg);
+  }
+}
+
+.slider-arrow--right {
+  opacity: 1;
+  top: 0;
+  right: 10px;
+
+  &::before {
+    transform: rotate(-30deg);
+  }
+
+  &::after {
+    transform: rotate(30deg);
+  }
+}
+
+.indicators {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  li {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 10px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid blue;
+    background: white;
+
+    &.active {
+      background: blue;
+    }
+  }
+}

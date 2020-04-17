@@ -1,0 +1,45 @@
+.cast {
+  color: #abb7c4;
+
+  .div-title {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    border-bottom: 1px solid #233a50;
+    height: 27px;
+    line-height: 22.5px;
+    margin: 30px 0 25px 0;
+    padding-bottom: 30px;
+  }
+
+  table {
+    background-color: inherit !important;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .head {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  td, th {
+    text-align: left;
+    padding: 8px;
+  }
+
+  td:first-child {
+    width: 70px;
+    img {
+      border-radius: 5px;
+      margin-left: -5px;
+    }
+  }
+
+  td:nth-child(2) {
+    font-size: 16px;
+    color: #4280bf;
+  }
+}
