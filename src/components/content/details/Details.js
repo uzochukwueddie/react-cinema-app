@@ -28,8 +28,7 @@ const Details = (props) => {
 
   return (
     <>
-      {
-        details &&
+      {details && (
         <div className="movie-container">
           <div className="movie-bg" style={{ backgroundImage: `url(${IMAGE_URL}${details.backdrop_path})` }}></div>
           <div className="movie-overlay"></div>
@@ -44,11 +43,9 @@ const Details = (props) => {
                 </div>
                 <div className="movie-genres">
                   <ul className="genres">
-                    {
-                      details.genres.map((genre) =>
-                        <li key={genre.id}>{genre.name}</li>
-                      )
-                    }
+                    {details.genres.map((genre) => (
+                      <li key={genre.id}>{genre.name}</li>
+                    ))}
                   </ul>
                 </div>
                 <div className="rating">
@@ -74,7 +71,7 @@ const Details = (props) => {
             </div>
           </div>
         </div>
-      }
+      )}
     </>
   );
 };
@@ -88,7 +85,4 @@ const mapStateToProps = (state) => ({
   movie: state.movies.movie
 });
 
-export default connect(
-  mapStateToProps,
-  { movieDetails }
-)(Details);
+export default connect(mapStateToProps, { movieDetails })(Details);

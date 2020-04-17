@@ -76,46 +76,38 @@ const Overview = (props) => {
         <div className="cast">
           <div className="div-title">Cast</div>
           <table>
-            {
-              credits.cast.map((data) =>
-                <tbody key={uuidv4()}>
-                  <tr>
-                    <td>
-                      <img src={
-                        data.profile_path ? `${IMAGE_URL}${data.profile_path}` : 'http://placehold.it/54x81'
-                      } alt="" />
-                    </td>
-                    <td>{data.name}</td>
-                    <td>{data.character}</td>
-                  </tr>
-                </tbody>
-              )
-            }
+            {credits.cast.map((data) => (
+              <tbody key={uuidv4()}>
+                <tr>
+                  <td>
+                    <img src={data.profile_path ? `${IMAGE_URL}${data.profile_path}` : 'http://placehold.it/54x81'} alt="" />
+                  </td>
+                  <td>{data.name}</td>
+                  <td>{data.character}</td>
+                </tr>
+              </tbody>
+            ))}
           </table>
         </div>
       </div>
       <div className="overview-column-2">
         <div className="overview-detail">
           <h6>Production Companies</h6>
-          {
-            details.production_companies.map((prod) =>
-              <div className="product-company" key={uuidv4()}>
-                <img src={
-                  prod.logo_path ? `${IMAGE_URL}${prod.logo_path}` : 'http://placehold.it/30x30'
-                } alt="" />
-                <span>{prod.name}</span>
-              </div>
-            )
-          }
+          {details.production_companies.map((prod) => (
+            <div className="product-company" key={uuidv4()}>
+              <img src={prod.logo_path ? `${IMAGE_URL}${prod.logo_path}` : 'http://placehold.it/30x30'} alt="" />
+              <span>{prod.name}</span>
+            </div>
+          ))}
         </div>
         <div className="overview-detail">
           <h6>Language(s)</h6>
           <p>
-            {
-              details.spoken_languages.map((language) =>
-                <a href="!#" key={language.name}>{language.name}</a>
-              )
-            }
+            {details.spoken_languages.map((language) => (
+              <a href="!#" key={language.name}>
+                {language.name}
+              </a>
+            ))}
           </p>
         </div>
         {items.map((data) => (
@@ -139,7 +131,4 @@ const mapStateToProps = (state) => ({
   movie: state.movies.movie
 });
 
-export default connect(
-  mapStateToProps,
-  {}
-)(Overview);
+export default connect(mapStateToProps, {})(Overview);
