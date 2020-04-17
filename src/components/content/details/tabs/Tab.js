@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const Tab = props => {
+const Tab = (props) => {
   const { activeTab, label, onClick } = props;
   const [className, setClassName] = useState('tab-list-item');
 

@@ -19,10 +19,7 @@ const Crew = () => {
           <tbody>
             <tr>
               <td>
-                <img
-                  src='http://placehold.it/54x81'
-                  alt=""
-                />
+                <img src="http://placehold.it/54x81" alt="" />
               </td>
               <td>Alan Silvestri</td>
               <td>Sound</td>

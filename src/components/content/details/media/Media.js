@@ -16,7 +16,7 @@ const Media = () => {
                   width: '100%',
                   height: '100%'
                 }}
-                src='https://www.youtube.com/embed/TcMBFSGVi1c'
+                src="https://www.youtube.com/embed/TcMBFSGVi1c"
                 frameBorder="0"
                 allowFullScreen
               />
