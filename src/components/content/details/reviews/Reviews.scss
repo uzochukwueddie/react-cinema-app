@@ -1,0 +1,32 @@
+.movie-reviews {
+  .div-title {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    border-bottom: 1px solid #233a50;
+    height: 27px;
+    line-height: 22.5px;
+    margin: 30px 0 25px 0;
+    padding-bottom: 30px;
+  }
+
+  .reviews {
+    color: #abb7c4;
+    line-height: 24px;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    text-align: justify;
+
+    h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+  }
+
+  p {
+    color: #abb7c4;
+    font-size: 16px;
+  }
+}
