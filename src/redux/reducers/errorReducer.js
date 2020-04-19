@@ -1,11 +1,18 @@
 import { SET_ERROR } from '../types';
 
-const initialState = '';
+const initialState = {
+  message: '',
+  statusCode: null
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_ERROR:
-      return action.payload;
+      return {
+        ...state,
+        message: action.payload.message,
+        statusCode: action.payload.statusCode
+      };
     default:
       return state;
   }
