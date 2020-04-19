@@ -1,6 +1,6 @@
 import { SET_ERROR } from '../types';
 
-export const setError = (errorMsg) => async dispatch => {
+export const setError = (errorMsg) => async (dispatch) => {
   if (errorMsg) {
     const payload = {
       message: errorMsg.message,

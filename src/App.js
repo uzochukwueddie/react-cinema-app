@@ -36,11 +36,9 @@ const App = (props) => {
       </ErrorBoundary>
       <div className="app">
         <Switch>
-          {
-            routesArray.map((data) =>
-              <Route key={data.id} exact path={data.path} component={data.component} {...props} />
-            )
-          }
+          {routesArray.map((data) => (
+            <Route key={data.id} exact path={data.path} component={data.component} {...props} />
+          ))}
         </Switch>
       </div>
     </Router>
@@ -51,7 +49,4 @@ App.propTypes = {
   appRoutes: PropTypes.func
 };
 
-export default connect(
-  null,
-  { appRoutes }
-)(App);
+export default connect(null, { appRoutes })(App);

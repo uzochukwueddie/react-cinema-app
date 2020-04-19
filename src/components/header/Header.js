@@ -37,22 +37,7 @@ const HEADER_LIST = [
 ];
 
 const Header = (props) => {
-  const {
-    getMovies,
-    setMovieType,
-    page,
-    totalPages,
-    setResponsePageNumber,
-    searchQuery,
-    searchResult,
-    clearMovieDetails,
-    routesArray,
-    path,
-    url,
-    pathURL,
-    setError,
-    errors
-  } = props;
+  const { getMovies, setMovieType, page, totalPages, setResponsePageNumber, searchQuery, searchResult, clearMovieDetails, routesArray, path, url, pathURL, setError, errors } = props;
   let [navClass, setNavClass] = useState(false);
   let [menuClass, setMenuClass] = useState(false);
   const [type, setType] = useState('now_playing');

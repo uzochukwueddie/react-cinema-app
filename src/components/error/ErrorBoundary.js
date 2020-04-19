@@ -30,7 +30,7 @@ class ErrorBoundary extends Component {
 
   render() {
     if (this.state.error) {
-      return (<ErrorPage clearState={this.clearState} />);
+      return <ErrorPage clearState={this.clearState} />;
     }
     return this.props.children;
   }
