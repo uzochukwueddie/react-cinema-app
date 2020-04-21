@@ -1,5 +1,5 @@
 # Pull from a base image
-FROM node:13-alpine as build
+FROM node:13-alpine
 
 # use app as the working directory
 WORKDIR /app
