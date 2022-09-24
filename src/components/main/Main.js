@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 
 import './Main.scss';
 import MainContent from '../content/main-content/MainContent';
@@ -10,11 +11,12 @@ import { pathURL } from '../../redux/actions/routes';
 import SearchResult from '../content/search-result/SearchResult';
 
 const Main = (props) => {
-  const { loadMoreMovies, page, totalPages, setResponsePageNumber, movieType, searchResult, match, pathURL, errors } = props;
+  const { loadMoreMovies, page, totalPages, setResponsePageNumber, movieType, searchResult, pathURL, errors } = props;
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(page);
   const mainRef = useRef();
   const bottomLineRef = useRef();
+  const location = useLocation();
 
   useEffect(() => {
     setLoading(true);
@@ -24,7 +26,7 @@ const Main = (props) => {
   }, []);
 
   useEffect(() => {
-    pathURL(match.path, match.url);
+    pathURL(location.pathname, location.pathname);
     setResponsePageNumber(currentPage, totalPages);
     // eslint-disable-next-line
   }, [currentPage, totalPages]);
@@ -51,7 +53,11 @@ const Main = (props) => {
     <>
       {!errors.message && !errors.statusCode && (
         <div className="main" ref={mainRef} onScroll={handleScroll}>
-          {loading ? <Spinner /> : <>{searchResult && searchResult.length === 0 ? <MainContent /> : <SearchResult />}</>}
+          {loading ? (
+            <Spinner />
+          ) : (
+            <>{searchResult && searchResult.length === 0 ? <MainContent /> : <SearchResult />}</>
+          )}
           <div ref={bottomLineRef}></div>
         </div>
       )}
@@ -68,7 +74,6 @@ Main.propTypes = {
   movieType: PropTypes.string,
   searchResult: PropTypes.array,
   pathURL: PropTypes.func,
-  match: PropTypes.object,
   errors: PropTypes.object
 };
 

@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
+import { useNavigate, useLocation, useMatch } from 'react-router-dom';
 
 import './Header.scss';
 import logo from '../../assets/cinema-logo.svg';
-import { getMovies, setMovieType, setResponsePageNumber, searchQuery, searchResult, clearMovieDetails } from '../../redux/actions/movies';
+import {
+  getMovies,
+  setMovieType,
+  setResponsePageNumber,
+  searchQuery,
+  searchResult,
+  clearMovieDetails
+} from '../../redux/actions/movies';
 import { pathURL } from '../../redux/actions/routes';
 import { setError } from '../../redux/actions/errors';
 
@@ -37,7 +44,22 @@ const HEADER_LIST = [
 ];
 
 const Header = (props) => {
-  const { getMovies, setMovieType, page, totalPages, setResponsePageNumber, searchQuery, searchResult, clearMovieDetails, routesArray, path, url, pathURL, setError, errors } = props;
+  const {
+    getMovies,
+    setMovieType,
+    page,
+    totalPages,
+    setResponsePageNumber,
+    searchQuery,
+    searchResult,
+    clearMovieDetails,
+    routesArray,
+    path,
+    url,
+    pathURL,
+    setError,
+    errors
+  } = props;
   let [navClass, setNavClass] = useState(false);
   let [menuClass, setMenuClass] = useState(false);
   const [type, setType] = useState('now_playing');
@@ -45,9 +67,9 @@ const Header = (props) => {
   const [disableSearch, setDisableSearch] = useState(false);
   const [hideHeader, setHideHeader] = useState(false);
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
-  const detailsRoute = useRouteMatch('/:id/:name/details');
+  const detailsRoute = useMatch('/:id/:name/details');
 
   useEffect(() => {
     if (routesArray.length) {
@@ -72,7 +94,7 @@ const Header = (props) => {
   }, [errors]);
 
   useEffect(() => {
-    if (path && !errors.message && !errors.statusCode) {
+    if (location.pathname && !errors.message && !errors.statusCode) {
       getMovies(type, page);
       setResponsePageNumber(page, totalPages);
       if (detailsRoute || location.pathname === '/') {
@@ -85,13 +107,13 @@ const Header = (props) => {
     }
 
     // eslint-disable-next-line
-  }, [type, disableSearch, location, path]);
+  }, [type, disableSearch, location]);
 
   const setMovieTypeUrl = (type) => {
     setDisableSearch(false);
     if (location.pathname !== '/') {
       clearMovieDetails();
-      history.push('/');
+      navigate('/');
       setType(type);
       setMovieType(type);
     } else {
@@ -109,7 +131,7 @@ const Header = (props) => {
   const navigateToMainPage = () => {
     setDisableSearch(false);
     clearMovieDetails();
-    history.push('/');
+    navigate('/');
   };
 
   const toggleMenu = () => {
@@ -133,14 +155,22 @@ const Header = (props) => {
             <div className="header-image" onClick={() => navigateToMainPage()}>
               <img src={logo} alt="" />
             </div>
-            <div className={`${menuClass ? 'header-menu-toggle is-active' : 'header-menu-toggle'}`} id="header-mobile-menu" onClick={() => toggleMenu()}>
+            <div
+              className={`${menuClass ? 'header-menu-toggle is-active' : 'header-menu-toggle'}`}
+              id="header-mobile-menu"
+              onClick={() => toggleMenu()}
+            >
               <span className="bar"></span>
               <span className="bar"></span>
               <span className="bar"></span>
             </div>
             <ul className={`${navClass ? 'header-nav header-mobile-nav' : 'header-nav'}`}>
               {HEADER_LIST.map((data) => (
-                <li key={data.id} className={data.type === type ? 'header-nav-item active-item' : 'header-nav-item'} onClick={() => setMovieTypeUrl(data.type)}>
+                <li
+                  key={data.id}
+                  className={data.type === type ? 'header-nav-item active-item' : 'header-nav-item'}
+                  onClick={() => setMovieTypeUrl(data.type)}
+                >
                   <span className="header-list-name">
                     <i className={data.iconClass}></i>
                   </span>
@@ -148,7 +178,13 @@ const Header = (props) => {
                   <span className="header-list-name">{data.name}</span>
                 </li>
               ))}
-              <input className={`search-input ${disableSearch ? 'disabled' : ''}`} type="text" placeholder="Search for a movie" value={search} onChange={onSearchChange} />
+              <input
+                className={`search-input ${disableSearch ? 'disabled' : ''}`}
+                type="text"
+                placeholder="Search for a movie"
+                value={search}
+                onChange={onSearchChange}
+              />
             </ul>
           </div>
         </div>
@@ -183,4 +219,13 @@ const mapStateToProps = (state) => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { getMovies, setMovieType, setResponsePageNumber, searchQuery, searchResult, clearMovieDetails, pathURL, setError })(Header);
+export default connect(mapStateToProps, {
+  getMovies,
+  setMovieType,
+  setResponsePageNumber,
+  searchQuery,
+  searchResult,
+  clearMovieDetails,
+  pathURL,
+  setError
+})(Header);

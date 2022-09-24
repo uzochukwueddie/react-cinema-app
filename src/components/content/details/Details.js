@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './Details.scss';
@@ -16,10 +16,11 @@ import { IMAGE_URL } from '../../../services/movies.service';
 import Spinner from '../../spinner/Spinner';
 
 const Details = (props) => {
-  const { movieDetails, movie, pathURL, match } = props;
+  const { movieDetails, movie, pathURL } = props;
   const [details, setDetails] = useState();
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     setLoading(true);
@@ -29,7 +30,7 @@ const Details = (props) => {
   }, []);
 
   useEffect(() => {
-    pathURL(match.path, match.url);
+    pathURL(location.pathname, location.pathname);
     if (movie.length === 0) {
       movieDetails(id);
     }
@@ -94,8 +95,7 @@ const Details = (props) => {
 Details.propTypes = {
   movie: PropTypes.array,
   movieDetails: PropTypes.func,
-  pathURL: PropTypes.func,
-  match: PropTypes.object
+  pathURL: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({

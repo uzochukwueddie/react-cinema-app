@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -7,12 +7,12 @@ import './ErrorPage.scss';
 import { setError } from '../../redux/actions/errors';
 
 const ErrorPage = ({ clearState, setError }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const navigateToHomePage = () => {
     setError({ message: '', statusCode: null });
     clearState();
-    history.push('/');
+    navigate('/');
   };
 
   return (
