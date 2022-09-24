@@ -16,3 +16,4 @@ tab_width = 4
 
 [*.md]
 max_line_length = off
+

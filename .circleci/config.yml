@@ -4,7 +4,7 @@ version: 2.1
 executors:
   app-executor:
     docker:
-      - image: circleci/node:15.5.0
+      - image: circleci/node:16.17.0
     working_directory: ~/repo
   slack-executor:
     docker:

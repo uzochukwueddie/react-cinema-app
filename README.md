@@ -4,7 +4,7 @@ A react app built with redux and [The Movie Database API](https://developers.the
 
 * React
 * Redux
-* Node-sass and CSS Grid
+* Sass and CSS Grid
 * Github
 * Docker
 * AWS S3
@@ -16,7 +16,7 @@ A react app built with redux and [The Movie Database API](https://developers.the
 
 * Clone the repo
 
-* Run `npm install`
+* Run `npm install or yarn install`
 
 * Create an account on [https://www.themoviedb.org/](https://www.themoviedb.org/) and obtain an API key.
 
@@ -24,5 +24,3 @@ A react app built with redux and [The Movie Database API](https://developers.the
 ```js
 REACT_APP_API_SECRET=your api key
 ```
-
-
