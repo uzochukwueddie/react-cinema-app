@@ -20,3 +20,4 @@ locals {
     Owner       = "Uzochukwu Eddie Odozi"
   }
 }
+
